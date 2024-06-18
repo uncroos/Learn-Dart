@@ -37,3 +37,10 @@
     {late} final(var도 가능) {변수이름};
     {late} final(var도 가능) {변수형} {변수이름};
 ```
+## 1.6
+- dart의 {const}는 js의 {const}와는 전혀 다르다.
+    - {const}는 개발자가 그 값을 사전에 알고 있어야 한다.
+    - {const}의 값을 사전에 모른다면(값이 API부터 할당되거나, 클라이언트에서 입력하는 값 등등) {const}로 생성하는 것이 아닌, {var}나 {final}로 생성해야 한다,
+- {const}는 {complie-time const} {complie-timeant
+}를 만들어줌
+- 
