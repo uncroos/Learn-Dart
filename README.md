@@ -110,6 +110,52 @@
             }
         ```
 ## 2.1
-- 
+- Lists
+    -  List를 사용하는 법
+        ``` 
+        void main() {
+            List num = [1, 2, 3];
+            var num = [1, 2, 3;
+        }
+        ```
+    - List는 collection if를 사용할 수 있다.
+        - List를 만들 때, if를 통해 true 또는 flase를 조건으로 만들 수 있다.
+            ```
+                void main() {
+                    var condition = true;
+                    var list = [
+                        1, 
+                        2, 
+                        3,
+                        if (condition) 4 // condition이 true라면 4를 입력
+                        ];
+                }
+            ```
+## 2.2
+- String Interpolation
+    - 변수 사용하는 방법
+    - 달러 기호를 붙이고 사용할 변수를 적어주면 된다.
+    - 만약 무언가를 계산하고 싶다면 ${ } 형태로 적어주면 된다.
+        ```
+            void main(){
+                var name = "정현서";
+                var age = 10;
+                va greeting = "hello $name, I'm ${age + 5}";
+            }
+        ```
 
+## 2.3
+- Collection For
+    - Dart는 조건문(if) 및 반복(for)을 사용하여 컬렉션을 구축하는 데 사용할 수 있는 컬렉션 if 및 컬렉션 for도 제공합니다.
+        ```
+            void main() {
+                var oldSPAM = ["정현서", "국제윤"];
+                var newSPAM = [
+                    "안요한",
+                    "최준명",
+                    for (var friend in oldSPAM) "❤️ $friend"
+                ];
+                print(newFriends); // [tom, jon, ❤️ nico, ❤️ lynn]
+            }
+        ```
 <details>
