@@ -91,7 +91,7 @@
 </details>
 
 <details>
-<summary>2. Data Types</summary>
+    <summary>2. Data Types</summary>
 
 ## 2.0
 - Basic Data Types
@@ -155,7 +155,55 @@
                     "최준명",
                     for (var friend in oldSPAM) "❤️ $friend"
                 ];
-                print(newFriends); // [tom, jon, ❤️ nico, ❤️ lynn]
+                print(newSPAM); // [안요한, 최준명, ❤️ 정현서, ❤️ 국제윤]
             }
         ```
+
+
+## 2.4
+- Maps
+    - 일반적으로 맵은 key와 value를 연결하는 객체입니다. 
+    - 키와 값 모두 모든 유형의 객체가 될 수 있습니다. 
+    - 각 키는 한 번만 발생하지만 동일한 값을 여러 번 사용할 수 있습니다.
+        ```
+            var gifts = {
+                // Key: Value
+                'first': '정현서',
+                'second': '국제윤',
+                'fifth': '안요한'
+            };
+            
+            // Map 생성자를 사용하여 동일한 객체를 만들 수 있습니다.
+            var gifts2 = Map();
+            gifts2['first'] = '정현서';
+            gifts2['second'] = '국제윤';
+            gifts2['fifth'] = '안요한';
+        ```
+
+## 2.5
+- Set
+    - Set에 속한 모든 아이템들이 유니크해야될 때 사용한다.
+    - 유니크할 필요가 없다면 List를 사용하면 된다.
+        ```
+            var SPMA = {'정현서', 국제윤', '안요한' };
+        ```
+</details>
+
 <details>
+<summary>3. FUNCTIONS</summary>
+
+## 3.0
+- Defining a Function
+    - Dart는 진정한 객체 지향 언어 => 함수도 객체이며 타입은 Function
+    - 함수를 변수에 할당하거나 다른 함수에 인수로 전달할 수 있음을 의미합니다.
+        ```
+            String SPAMmenber(String name) => "Hello ${name} nice to meet you.";
+
+            void main() {
+                print(SPAMmenber("안요한"));
+            }
+        ```
+
+## 3.1
+- 
+</details>
