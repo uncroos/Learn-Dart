@@ -146,7 +146,7 @@
 
 ## 2.3
 - Collection For
-    - Dart는 조건문(if) 및 반복(for)을 사용하여 컬렉션을 구축하는 데 사용할 수 있는 컬렉션 if 및 컬렉션 for도 제공합니다.
+    - Dart는 조건문(if) 및 반복(for)을 사용하여 컬렉션을 구축하는 데 사용할 수 있는 컬렉션 `if` 및 컬렉션 `for`도 제공합니다.
         ```
             void main() {
                 var oldSPAM = ["정현서", "국제윤"];
@@ -197,13 +197,299 @@
     - Dart는 진정한 객체 지향 언어 => 함수도 객체이며 타입은 Function
     - 함수를 변수에 할당하거나 다른 함수에 인수로 전달할 수 있음을 의미합니다.
         ```
-            String SPAMmenber(String name) => "Hello ${name} nice to meet you.";
+            String saySPAMmenber(String name) => "Hello ${name} nice to meet you.";
 
             void main() {
-                print(SPAMmenber("안요한"));
+                print(saySPAMmenber("안요한"));
             }
         ```
 
 ## 3.1
-- 
+- Named parameters
+    - Named parameters는 명시적으로 required로 표시되지 않는 한 선택 사항입니다. 
+    - 기본값을 주지 않거나 Named parameters를 필수로 표시하지 않으면 해당 유형은 기본값이 null이 됨
+    - 위에서 말한듯이 null값이 되므로 null을 허용해야 합니다.
+        ```
+            String saySPAM({required String name, required int age, required String school}) {
+                return "${name} / ${age} / ${school}";
+            }
+            void main() {
+                print(saySPAM(name: "정현서", age: 19, school: "서울로봇고"));
+            }
+        ```
+
+## 3.2
+- Recap
+    - 요약하는 파트이
+    - 걑아서 빼버림
+
+## 3.3
+- Optional Positional Parameters
+    - Dart에서는 대괄호 []를 사용해 선택적 위치 매개변수(Optional Positional Parameters)를 정의가 가능</br>
+    -> 무슨 쌉소리냐면 null값을 명시적으로 할당하는가? 안하는가?이다.
+    - 선택적 위치 매개변수를 사용하면 함수 호출 시 매개변수 생략이 가능하다.
+        ```
+            void greet(String name, [String greeting = 'Hello', String punctuation = '.']) {
+                print('$greeting, $name$punctuation');
+            }
+            
+            void main() {
+                greet('Alice');
+                greet('Bob', 'Hi'); 
+                greet('Charlie', 'Good morning', '!');
+            }
+        ```
+
+## 3.4
+- QQ Operator
+    - QQ Operator(Null-Aware Operator)는 Dart 언어에서 null 값 처리를 간편하게 하기 위해 도입된 연산자
+    - QQ Operator는 Dart의 세 가지 주요 Null-Aware Operator의 별칭
+    - 아래와 같이 세가지 기능이 있다.
+        - Null-aware assignment operator (??=)
+        - Null-aware access operator (?.)
+        - Null-coalescing operator (??)
+        ```
+            class SPAM {
+                String name;
+                SPAM(this.name);
+            }
+            
+            void main() {
+                var a;
+                a ??= 5; // a가 null이므로 5를 할당
+                print(a); // 출력: 5
+                
+                var b = 10;
+                b ??= 20; // b는 null이 아니므로 값이 변경되지 않음
+                print(b); // 출력: 10
+                
+                SPAM spam1 = SPAM('John');
+                print(spam1?.name); // 출력: John
+                
+                SPAM? spam2; // nullable로 선언
+                print(spam2?.name); // 출력: null, 오류가 발생하지 않음
+                
+                var name;
+                print(name ?? 'Guest'); // 출력: Guest
+                
+                name = '정현서';
+                print(name ?? 'Guest'); // 출력: 정현서
+            } 
+        ```
+
+## 3.5
+- Typedef 
+    - typedef는 함수 타입을 정의할 때 사용되는 키워드
+    - 특정 함수의 타입을 명시적으로 정의하고, 이를 변수에 할당하거나 함수의 매개변수 타입으로 사용 가능.
+    - 주로 콜백 함수를 정의할 때 유용하게 활용됩니다.
+        ```
+            typedef ListOfInts = List;
+            
+            ListOfInts reverseListOfNumbers(ListOfInts list) {
+                var reversed = list.reversed;
+                return reversed.toList();
+            }
+        ```
+</details>
+
+
+<details>
+<summary>4. CLASSES</summary>
+
+## 4.0
+- Your First Dart Class
+    - dart에서 property를 선언할 때는 타입을 사용해서 정의한다.
+    - class method에서는 `this`를 사용하지 않는다.
+    ```
+       class Player{
+        final var a = "정현서"
+       }
+
+       void sayName{
+        print("Hi, my name is $name")
+       } 
+    ```
+
+## 4.1
+- Constructors
+    - constructor(생성자) 함수는 클래스의 이름과 같아야 한다.
+        ```
+            class Person {
+                String name;
+
+                //생성자 정의
+                Person(this.name);
+            }
+        ```
+## 4.2
+- Named Constructor Parameters
+    - 클래스가 많아짐 => 생성자도 많아짐
+    - 위와 같은 비효율적인 행위를 줄위기 위하여 사용한다,.
+    - 기본 생성자의 매개변수들을 중괄호 {}로 묶어서 정의하는 방식으로, 각 매개변수가 해당 클래스의 인스턴스를 생성할 때 어떤 역할을 하는지 명확히 할 수 있게 해줌 => 쌈@뽕하게 정리가능
+    - 이는 매개변수의 순서를 신경 쓰지 않고 인스턴스를 생성할 수 있도록 도와줌
+        ```
+            class Player {
+                final String name;
+
+                Player({required this.name});
+                
+                void sayHello() {
+                    print("Hi, my name is $name.");
+                }
+            }
+            
+            void main() {
+                // Player 인스턴스 생성
+                var player = Player(
+                    name: "nudge",
+                );
+                
+                // Player의 sayHello 메서드 호출
+                player.sayHello();
+            }
+        ```
+
+## 4.3
+- Named Constructors
+    - Named Constructors(명명된 생성자)는 클래스의 인스턴스를 생성하는 여러 가지 방법을 제공하기 위해 사용된다. 
+    - Named Constructors는 클래스 이름 뒤에 마침표와 생성자의 이름을 붙여 정의함
+    - 이를 통해 생성자에 특정한 이름을 부여하고, 다양한 초기화 로직을 구현 매우 쌈@뽕하게 됨.
+        ```
+            class Player {
+                final String name;
+                final String team;
+                
+                Player({required this.name, this.team = 'unknown'});
+                
+                Player.createRed({required this.name}) : team = 'red';
+                
+                Player.createBlue({required this.name}) : team = 'blue';
+                
+                void sayHello() {
+                    print("Hi, my name is $name and I am in team $team.");
+                }
+            }
+            
+            void main() {
+                var defaultPlayer = Player(name: 'Alice');
+                
+                defaultPlayer.sayHello();
+                
+                var redPlayer = Player.createRed(name: 'Bob');
+                
+                redPlayer.sayHello();
+                
+                var bluePlayer = Player.createBlue(name: 'Charlie');
+                
+                bluePlayer.sayHello();
+            } 
+        ```
+
+## 4.4
+- Recap
+    - 요약은 쌈@뽕하게 건너뛰도록 함
+
+## 4.5
+- Cascade Notation
+    - 
+## 4.6
+- Enums
+    - Enums는 관련된 상수 집합을 정의하는 데 사용한다. 
+    - 각 상수는 고유한 값이 존재하는데 Dart에서 `Enums`를 조지면 => 코드를 더 읽기 쉽고 유지보수하기 쉽게 만들어줌.
+        ```
+            enum Team {
+                red,
+                blue,
+            }
+            
+            class Player {
+                String name;
+                int age;
+                Team team;
+                
+                Player({
+                    required this.name,
+                    required this.age,
+                    required this.team,
+                });
+            }
+            
+            void main() {
+                var jisoung = Player(name: "jisoung", age: 17, team: Team.red);
+                
+                var sushi = jisoung
+                ..name = "sushi"
+                ..age = 12
+                ..team = Team.blue;
+                
+                print("Player 1: ${jisoung.name}, Age: ${jisoung.age}, Team: ${jisoung.team}");
+                print("Player 2: ${sushi.name}, Age: ${sushi.age}, Team: ${sushi.team}");
+            }
+        ```
+## 4.7
+- Abstract Classes
+    - Abstract Classes는 인스턴스를 만들 수 없는 클래스
+    - 다른 클래스가 이를 상속받아 구현해야 하는 메서드를 정의할 때 사용함. 
+    - 이를 통해 공통 인터페이스나 기능을 정의할 수 있습니다.
+
+
+## 4.8
+- Inheritance (상속)
+    - Inheritance는 클래스가 다른 클래스의 속성과 메서드를 상속받아 재사용하는 것이다.
+    - JAVA의 상속과 비슷함(똑같은가?)
+    - 이를 통해 코드를 더 효율적으로 작성하고 유지보수가 가능함
+        ```
+            class Animal {
+                void makeSound() {
+                    print("Animal sound");
+                }
+            }
+            
+            class Dog extends Animal {
+                @override
+                void makeSound() {
+                    print("Bark");
+                }
+            }
+            
+            void main() {
+                var dog = Dog();
+                dog.makeSound(); // Output: Bark
+            }
+        ```
+## 4.9
+- Mixins
+    - Mixins는 여러 클래스에서 공통적으로 사용할 수 있는 메서드와 속성을 정의하는 데 사용한다.
+    - 클래스에 기능을 추가할 때 사용되며, 다중 상속의 효과를 제공한다.(살짝 고아원 원장님)
+        ```
+            mixin CanRun {
+                void run() {
+                    print("Running");
+                }
+            }
+            
+            class Animal {
+                void makeSound() {
+                    print("Animal sound");
+                }
+            }
+            
+            class Dog extends Animal with CanRun {
+                @override
+                void makeSound() {
+                    print("Bark");
+                }
+            }
+            
+            void main() {
+                var dog = Dog();
+                dog.makeSound(); // Output: Bark
+                dog.run(); // Output: Running
+            }
+        ```
+## 4.10
+- 끝
+    - 강의가 끝났다.
+    - ㅈㄴ 쌈@뽕하다.
+    - tlqkf 이제는 flutter 강의 들어야 한다... 
 </details>
